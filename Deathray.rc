@@ -1,0 +1,16 @@
+/* Deathray2 - An Avisynth plug-in filter for spatial/temporal non-local means de-noising.
+ *
+ * version 1.00
+ *
+ * Copyright 2015, Jawed Ashraf - Deathray@cupidity.f9.co.uk
+ */
+
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+RC_UTIL         RCDATA "Util.cl"
+RC_NLM          RCDATA "nlm.cl"
+RC_SORT         RCDATA "Sort.cl"
+RC_NLM_SINGLE   RCDATA "SingleFrameNLM.cl"
+RC_NLM_MULTI    RCDATA "MultiFrameNLM.cl"
