@@ -14,7 +14,7 @@
 #include "MultiFrame.h"
 #include "MultiFrameRequest.h"
 
-#define DEVICE 1 // Filter currently only uses a single device
+#define DEVICE 0 // Filter currently only uses a single device
 
 
 // Globals are used because the cost of re-initialisation per frame is prohibitive
