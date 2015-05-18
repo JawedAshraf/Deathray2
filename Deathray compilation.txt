@@ -40,15 +40,3 @@ and choosing the option "Compile".
 
 The resources then need to be linked into the DLL, so link Deathray.
 
-
-Note on OpenCL Debugging
-========================
-
-It is easiest to use AMD's APP Kernel Analyzer2 to check for compilation
-errors in OpenCL code. Copy all the code from the following files, in this 
-order, into Kernel Analyzer's Source Code pane:
-
- - Util.cl 
- - nlm.cl
- - SingleFrameNLM.cl
- - MultiFrameNLM.cl
