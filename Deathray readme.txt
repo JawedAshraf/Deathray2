@@ -128,11 +128,11 @@ value for each in brackets:
  a   (8)   - alpha sample set size.
  
              limited to values in the range 8 to 128, with values
-			 rounded down to the nearest multiple of 8.
+             rounded down to the nearest multiple of 8.
  
-			 Deathray2 sorts the samples in order to exclude the
-			 worst samples. This improves detail retention while
-			 enabling strong filtering.
+	     Deathray2 sorts the samples in order to exclude the
+	     worst samples. This improves detail retention while
+	     enabling strong filtering.
 			 
 			 
 Avisynth MT
