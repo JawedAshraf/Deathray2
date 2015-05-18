@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EF8E4F7E-9962-41B6-9934-250E85A55B9B}</ProjectGuid>
     <RootNamespace>Deathray</RootNamespace>
+    <ProjectName>Deathray2</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
