@@ -73,7 +73,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(AMDAPPSDKROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OCL_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <WarningLevel>Level3</WarningLevel>
@@ -81,8 +81,8 @@
       <PreprocessorDefinitions>CL_USE_DEPRECATED_OPENCL_1_1_APIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(AMDAPPSDKROOT)\lib\x86\OpenCL.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(AMDAPPSDKROOT)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(OCL_ROOT)\lib\x86\opencl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EnableUAC>false</EnableUAC>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
