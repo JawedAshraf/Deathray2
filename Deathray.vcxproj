@@ -78,7 +78,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <PreprocessorDefinitions>CL_USE_DEPRECATED_OPENCL_1_1_APIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CL_USE_DEPRECATED_OPENCL_1_1_APIS;CL_USE_DEPRECATED_OPENCL_2_0_APIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OCL_ROOT)\lib\x86\opencl.lib;%(AdditionalDependencies)</AdditionalDependencies>
