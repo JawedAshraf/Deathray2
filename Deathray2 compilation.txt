@@ -1,14 +1,15 @@
 Deathray compilation
 ====================
 
-The project was created with Visual Studio 2008 and updated with VS2012
-Express Edition.
+The project works with VS2012 Express Edition. Newer versions should 
+convert the project without any issues.
 
-Ensure that the OpenCL SDK paths match the location of the SDK on your system.
- 
-The AMD APP SDK 2.8 was used to make the project. Environment variables based 
-on that SDK are in the project's properties. These should ensure that paths 
-match on your system if you are using the AMD APP SDK.
+The AMD OCL Light SDK 3 was used to make the project and the project's 
+properties are based upon the environment variable OCL_ROOT. See:
+
+https://github.com/GPUOpen-LibrariesAndSDKs/OCL-SDK
+
+The installer should create the required environment variable OCL_ROOT.
 
 For other SDKs you will need to supply the appropriate paths in:
 
@@ -21,7 +22,6 @@ Additional Include Directories, option /I
 Linker
 ------
 
-Additional Library Directories, option /LIBPATH
 Additional Dependencies
 
 If in doubt examine these settings from a sample project that was installed
