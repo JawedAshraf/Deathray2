@@ -226,15 +226,10 @@ result MultiFrame::CopyTo(MultiFrameRequest *retrieved) {
 
 result MultiFrame::ExecuteFrame(
     const   int         &frame_id,
-    const   bool        &sample_equals_target,
-            cl_event    &copying_target, 
-            cl_event    *filter_events) {
-
-    cl_event executed;
+    const   bool        &sample_equals_target) {
 
     filter_.SetNumberedArg(FILTER_ARG_ALPHA_SO_FAR, sizeof(int), &alpha_so_far_);
-    result status = frames_[frame_id].Execute(sample_equals_target, &copying_target, &executed);
-    filter_events[frame_id] = executed;
+    result status = frames_[frame_id].Execute(sample_equals_target);
     alpha_so_far_ += alpha_set_size_ / (8 * (2 * temporal_radius_ + 1)); // TODO make this a function
     return status;
 }
@@ -259,15 +254,14 @@ result MultiFrame::Execute() {
             alpha_so_far_ = 0;
             filter_.SetNumberedArg(FILTER_ARG_TOP_LEFT, sizeof(cl_int2), &top_left);
 
-            cl_event *filter_events = new cl_event[frames_.size()];
             for (int i = 0; i < 2 * temporal_radius_ + 1; ++i) {
                 bool sample_equals_target = i == target_frame_id;
                 if (!sample_equals_target) { // exclude the target frame so that it is processed last - TODO unnecessary
-                    status = ExecuteFrame(i, sample_equals_target, copying_target, filter_events);
+                    status = ExecuteFrame(i, sample_equals_target);
                     if (status != FILTER_OK) return status;
                 }
             }
-            status = ExecuteFrame(target_frame_id, true, copying_target, filter_events);
+            status = ExecuteFrame(target_frame_id, true);
             if (status != FILTER_OK) return status;
 
             sort_.SetNumberedArg(0, sizeof(cl_mem), g_devices[device_id_].buffers_.ptr(target_frame_plane));
@@ -348,9 +342,7 @@ void MultiFrame::Frame::Plane(
 }
 
 result MultiFrame::Frame::Execute(
-    const   bool        &is_sample_equal_to_target, 
-            cl_event    *antecedent, 
-            cl_event    *executed) {
+    const   bool        &is_sample_equal_to_target) {
 
     result status = FILTER_OK;
 
@@ -359,6 +351,6 @@ result MultiFrame::Frame::Execute(
     filter_.SetNumberedArg(FILTER_ARG_SAMPLE_PLANE, sizeof(cl_mem), g_devices[device_id_].buffers_.ptr(plane_));
     filter_.SetNumberedArg(FILTER_ARG_SAMPLE_EQUALS_TARGET, sizeof(int), &sample_equals_target);
 
-    status = filter_.Execute(cq_, executed);
+    status = filter_.Execute(cq_, NULL);
     return status;
 }

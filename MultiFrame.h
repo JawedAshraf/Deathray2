@@ -106,10 +106,7 @@ private:
     // Process a single frame in the circular buffer of frames
     result ExecuteFrame(
         const   int         &frame_id,              // frame being filtered
-        const   bool        &sample_equals_target,  // frame containing sample pixels is also target of filtering
-                cl_event    &copying_target,        // TODO delete
-                cl_event    *filter_events);        // TODO delete
-
+        const   bool        &sample_equals_target); // frame containing sample pixels is also target of filtering
 
     // Frame
     // An object for each of the 2 * temporal_radius + 1 frames, all of which are processed separately.
@@ -167,9 +164,7 @@ private:
         // handling the target frame. The id of the frame object handling the target frame
         // progresses circularly around the "ring" of Frame objects, as the clip is processed
         result Execute(
-            const   bool        &is_sample_equal_to_target,     // specify whether frame is that being filtered
-                    cl_event    *antecedent,                    // TODO delete
-                    cl_event    *executed);                     // TODO delete
+            const   bool        &is_sample_equal_to_target);    // specify whether frame is that being filtered
 
     private:
 
