@@ -158,10 +158,13 @@ void BufferMap::Destroy(
         clReleaseMemObject(buffer_map_[index]->obj());
     }
 
+    delete buffer_map_[index];
     buffer_map_.erase(index);
 }
 
 void BufferMap::DestroyAll() {
+    if (buffer_map_.size() == 0) return;
+
     map<int, Mem*>::iterator each_buffer;
     map<int, Mem*>::iterator next_buffer;
     each_buffer = buffer_map_.begin();
