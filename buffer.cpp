@@ -19,7 +19,6 @@ Mem::Mem() {
 }
 
 Mem::~Mem() {
-
     if (mem_ == NULL) return;
 
     cl_uint reference_count = 0;
@@ -32,9 +31,6 @@ Mem::~Mem() {
     for (cl_uint i = 0; i < reference_count; ++i) {
         clReleaseMemObject(mem_);
     }
-
-    mem_ = NULL;
-    valid_ = false;
 }
 
 cl_mem Mem::obj() {

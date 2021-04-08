@@ -143,21 +143,7 @@ result BufferMap::CopyFromPlaneAsynch(
 void BufferMap::Destroy(
     const int &index) { 
 
-    if (! ValidIndex(index)) return;    
-        
-    // Check reference count
-    cl_uint reference_count = 0;
-    clGetMemObjectInfo(buffer_map_[index]->obj(),
-                       CL_MEM_REFERENCE_COUNT,
-                       sizeof(cl_uint),
-                       &reference_count,
-                       0);
-
-    // Repeatedly release it to ensure it will be destroyed
-    for (cl_uint i = 0; i < reference_count; ++i) {
-        clReleaseMemObject(buffer_map_[index]->obj());
-    }
-
+    if (! ValidIndex(index)) return;
     delete buffer_map_[index];
     buffer_map_.erase(index);
 }
