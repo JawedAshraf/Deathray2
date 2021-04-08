@@ -29,7 +29,7 @@ public:
         int alpha_size, 
         IScriptEnvironment* env);
 
-    ~Deathray(){};
+    ~Deathray();
 
     PVideoFrame __stdcall GetFrame(int n, IScriptEnvironment* env);
 
