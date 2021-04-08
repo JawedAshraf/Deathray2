@@ -15,10 +15,6 @@ Device::Device() {
     id_ = NULL;
 }
 
-Device::~Device(void) {
-    buffers_.DestroyAll();
-} 
-
 void Device::Init(const cl_device_id &single_device) {
     id_ = single_device;
 }

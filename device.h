@@ -36,7 +36,7 @@ public:
 
     // Destructor
     // Deletes extant buffers
-    ~Device();
+    ~Device() {};
 
     // Init
     // Record the new device and create a command queue for it
