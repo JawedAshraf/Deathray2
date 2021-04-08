@@ -39,8 +39,8 @@ protected:
     cl_mem              mem_   ;    // OpenCL buffer object
 };
 
-// Scalar or vector float, int, uint etc. buffer on the device
 // Buffer
+// Scalar or vector float, int, uint etc. buffer on the device
 // Client has to know size in bytes and data movements
 // are purely by byte count
 class Buffer: public Mem {
