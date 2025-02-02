@@ -83,6 +83,10 @@ Deathray::Deathray(PClip child,
                                               env_(env) {
 }
 
+Deathray::~Deathray() {
+    if (g_opencl_available) g_devices[DEVICE].buffers_.DestroyAll();
+}
+
 result Deathray::Init() {
     if (g_devices != NULL) return FILTER_OK;
 

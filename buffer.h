@@ -17,7 +17,7 @@ enum result;
 class Mem {
 public:
     Mem();
-    ~Mem();
+    virtual ~Mem() = 0;
 
     // obj
     // Returns the OpenCL memory buffer. Used to manipulate the 
@@ -29,10 +29,6 @@ public:
     // a kernel call.
     cl_mem* ptr();
 
-    // Init
-    // This class is abstract
-    virtual void Init() = 0;
-
     // valid
     // Indicates that the buffer is ready to be used
     bool valid() {return valid_;}
@@ -43,8 +39,8 @@ protected:
     cl_mem              mem_   ;    // OpenCL buffer object
 };
 
-// Scalar or vector float, int, uint etc. buffer on the device
 // Buffer
+// Scalar or vector float, int, uint etc. buffer on the device
 // Client has to know size in bytes and data movements
 // are purely by byte count
 class Buffer: public Mem {
@@ -71,11 +67,6 @@ public:
 
 private:
     size_t bytes_;                                  // size in bytes
-
-    // Init
-    // Null Init() makes this class instantiable, overriding
-    // the abstract declaration in Mem
-    virtual void Init() {}
 };
 
 // Plane
@@ -155,12 +146,6 @@ public:
 protected:
     int     width_;     // width of plane buffer in pixels
     int     height_;    // height of plane buffer
-
-private:
-    // Init
-    // Null Init() makes this class instantiable, overriding
-    // the abstract declaration in Mem
-    virtual void Init() {}
 };
 
 // GetFormatPixel
