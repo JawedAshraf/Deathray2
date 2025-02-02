@@ -311,6 +311,10 @@ void Deathray::Execute() {
     }
 
     clWaitForEvents(wait_list_length, wait_list);
+
+    for (cl_uint wait_index = 0; wait_index < wait_list_length; wait_index++) {
+        clReleaseEvent(wait_list[wait_index]);
+    }
 }
 
 AVSValue __cdecl CreateDeathray(AVSValue args, void *user_data, IScriptEnvironment *env) {
