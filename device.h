@@ -32,7 +32,7 @@ public:
     // Always constructed in an undefined state.
     // Client must create an array of device objects
     // before configuring each one individually.
-    Device::Device();    
+    Device();    
 
     // Destructor
     // Deletes extant buffers
