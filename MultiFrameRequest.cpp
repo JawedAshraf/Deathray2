@@ -6,6 +6,7 @@
  */
 
 #include "MultiFrameRequest.h"
+#include <cstddef>
 
 void MultiFrameRequest::Request(int frame_number) {
     frames_.insert(pair<int, const unsigned char*>(frame_number, static_cast<const unsigned char*>(NULL)));
