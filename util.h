@@ -79,11 +79,13 @@ int GetAlphaBufferSize(
     const    int        &region_height,
     const    int        &sample_expand);
 
+#ifndef LIBDEATHRAY2_STATIC
 // GetSourceFromResource
 // Returns a string from a single OpenCL kernel source file.
 //
 // The resource is specified as one of the DEFINEd resources 
 // listed in resource.h.
 result GetSourceFromResource(int resource_id, string *source);
+#endif
 
 #endif // _UTIL_H_
