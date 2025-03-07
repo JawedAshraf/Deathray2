@@ -70,7 +70,11 @@ public:
     // is not guaranteed upon return
     result CopyToPlane(
         const   int                 &index,         // index of the device buffer
-        const   byte                &host_buffer,   // host's buffer of pixels in row major layout            
+#if __GNUC__ && (__cplusplus >= 201703L)
+        const   unsigned char       &host_buffer,   // host's buffer of pixels in row major layout
+#else
+        const   byte                &host_buffer,   // host's buffer of pixels in row major layout
+#endif
         const   int                 &host_cols,     // count of pixels per row to be copied        
         const   int                 &host_rows,     // count of rows to be copied        
         const   int                 &host_pitch);   // size in pixels of each row of host buffer
@@ -82,7 +86,11 @@ public:
     // to discern when copy has finished.
     result CopyToPlaneAsynch(
         const   int                 &index,         // index of the device buffer
-        const   byte                &host_buffer,   // host's buffer of pixels in row major layout            
+#if __GNUC__ && (__cplusplus >= 201703L)
+        const   unsigned char       &host_buffer,   // host's buffer of pixels in row major layout
+#else
+        const   byte                &host_buffer,   // host's buffer of pixels in row major layout
+#endif
         const   int                 &host_cols,     // count of pixels per row to be copied                
         const   int                 &host_rows,     // count of rows to be copied                
         const   int                 &host_pitch,    // size in pixels of each row of host buffer
@@ -97,7 +105,11 @@ public:
         const   int                 &host_cols,     // count of pixels per row to be copied        
         const   int                 &host_rows,     // count of rows to be copied                            
         const   int                 &host_pitch,    // size in pixels of each row of host buffer
-                byte                *host_buffer);  // host's buffer of pixels in row major layout            
+#if __GNUC__ && (__cplusplus >= 201703L)
+        unsigned char               *host_buffer);  // host's buffer of pixels in row major layout
+#else
+        byte                        *host_buffer);  // host's buffer of pixels in row major layout
+#endif
 
     // CopyFromPlaneAsynch
     // Copy pixels from plane to host buffer.
@@ -115,7 +127,11 @@ public:
         const   int                 &host_pitch,    // size in pixels of each row of host buffer
         const   cl_event            *antecedent,    // event that must complete before this copy can start
                 cl_event            *event,         // event to track completion of this copy
-                byte                *host_buffer);  // host's buffer of pixels in row major layout
+#if __GNUC__ && (__cplusplus >= 201703L)
+        unsigned char               *host_buffer);  // host's buffer of pixels in row major layout
+#else
+        byte                        *host_buffer);  // host's buffer of pixels in row major layout
+#endif
 
     // Destroy
     // Destroys buffer entry in map and releases the device-allocated buffer
