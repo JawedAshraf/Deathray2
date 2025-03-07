@@ -42,6 +42,7 @@ result GetDeviceCount(
 result GetDeviceList(
     cl_device_id** devices);                            // Array of devices found by OpenCL
 
+#ifndef LIBDEATHRAY2_STATIC
 // AssembleSources
 // Produces a single string containing the text of all the resources
 // specified in the input array
@@ -49,6 +50,7 @@ result AssembleSources(
     const   int             *resources,                 // array of resources declared to exist in DLL
     const   int             &resource_count,            // count of resources defined within DLL
             string          *entire_program_source);    // source code concatenated from all resources
+#endif
 
 // CompileAll
 // All kernels are compiled, for all available devices.
