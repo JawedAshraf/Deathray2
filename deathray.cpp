@@ -5,6 +5,8 @@
  * Copyright 2015, Jawed Ashraf - Deathray@cupidity.f9.co.uk
  */
 
+#include <cmath>
+
 #include "result.h"
 #include "util.h"
 #include "clutil.h"
@@ -13,8 +15,6 @@
 #include "SingleFrame.h"
 #include "MultiFrame.h"
 #include "MultiFrameRequest.h"
-
-#include <cmath>
 
 #define DEVICE 0 // Filter currently only uses a single device
 
