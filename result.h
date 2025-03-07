@@ -36,4 +36,4 @@ enum result {
     FILTER_MULTI_FRAME_INITIALISATION_FAILED
 };
 
-#endif RESULT_H_
+#endif // RESULT_H_
