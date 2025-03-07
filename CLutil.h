@@ -42,7 +42,7 @@ result GetDeviceCount(
 result GetDeviceList(
     cl_device_id** devices);                            // Array of devices found by OpenCL
 
-#ifndef LIBDEATHRAY2_STATIC
+#ifdef LIBDEATHRAY2_STATIC
 // AssembleSources
 // Produces a single string containing the text of all the resources
 // specified in the input array
