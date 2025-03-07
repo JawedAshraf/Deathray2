@@ -90,6 +90,7 @@ int GetAlphaBufferSize(
     return region_width * region_height * GetAlphaSetSize(temporal_radius, sample_expand);
 }
 
+#ifndef LIBDEATHRAY2_STATIC
 result GetSourceFromResource(int resource_id, string *source) {
     // resource.h contains a set of #DEFINEs that specify
     // the "filenames" of resources that have been compiled
@@ -128,3 +129,4 @@ result GetSourceFromResource(int resource_id, string *source) {
 
     return FILTER_OK ; 
 }
+#endif
