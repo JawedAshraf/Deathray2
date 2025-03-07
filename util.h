@@ -79,7 +79,7 @@ int GetAlphaBufferSize(
     const    int        &region_height,
     const    int        &sample_expand);
 
-#ifndef LIBDEATHRAY2_STATIC
+#ifdef LIBDEATHRAY2_STATIC
 // GetSourceFromResource
 // Returns a string from a single OpenCL kernel source file.
 //
