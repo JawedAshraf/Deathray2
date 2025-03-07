@@ -14,6 +14,8 @@
 #include "MultiFrame.h"
 #include "MultiFrameRequest.h"
 
+#include <cmath>
+
 #define DEVICE 0 // Filter currently only uses a single device
 
 
