@@ -139,7 +139,7 @@ void Plane::Init(
 
     mem_ = clCreateImage2D(g_context,
                            CL_MEM_READ_WRITE,
-                           &GetFormatPixel(),
+                           GetFormatPixel(),
                            width_,
                            height_,
                            0,
@@ -288,18 +288,19 @@ result Plane::CopyFromAsynch(
     return FILTER_OK;
 }
 
-cl_image_format GetFormatPixel() {
+cl_image_format *GetFormatPixel() {
     // Image processing uses floating point arithmetic.
     // The device automatically converts integers between the host
     // format of 0 to 255 and the range 0.f to 1.f.
 
-    cl_image_format format;
+    cl_image_format* format;
 
     // This merely describes four pixels from the plane, not the colour space.
     // It means four pixels are addressed as a single element by the device.
-    format.image_channel_order      = CL_RGBA;
+    format->image_channel_order      = CL_RGBA;
     // unsigned normalised byte, i.e. 0 to 255 seen by host, is 0.f to 1.f in kernel
-    format.image_channel_data_type  = CL_UNORM_INT8;    
+    format->image_channel_data_type  = CL_UNORM_INT8;
 
     return format;
 }
+

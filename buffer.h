@@ -151,6 +151,6 @@ protected:
 // GetFormatPixel
 // Returns a structure containing the correct settings
 // for a 2D buffer of pixels organised in 4s horizontally.
-cl_image_format GetFormatPixel();
+cl_image_format *GetFormatPixel();
 
 #endif // _BUFFER_H_
