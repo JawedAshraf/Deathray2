@@ -163,6 +163,7 @@ result GetDeviceList(cl_device_id **devices) {
     return FILTER_OK;        
 }
 
+#ifdef LIBDEATHRAY2_STATIC
 result AssembleSources(
     const   int     *resources,
     const   int     &resource_count, 
@@ -183,6 +184,7 @@ result AssembleSources(
 
     return FILTER_OK ;    
 }
+#endif
 
 result CompileAll(
     const   int             &device_count,
@@ -210,7 +212,9 @@ result CompileAll(
                                            };
     string entire_program_source;
 
+#ifdef LIBDEATHRAY2_STATIC
     AssembleSources(&(resources[0]), resource_count, &entire_program_source);
+#endif
 
     const char* entire_program_c_str = entire_program_source.c_str();
     cl_program program = clCreateProgramWithSource(g_context, 
