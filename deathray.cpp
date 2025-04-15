@@ -5,6 +5,8 @@
  * Copyright 2015, Jawed Ashraf - Deathray@cupidity.f9.co.uk
  */
 
+#include <cmath>
+
 #include "result.h"
 #include "util.h"
 #include "clutil.h"
