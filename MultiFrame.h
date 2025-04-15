@@ -64,7 +64,7 @@ public:
 
     // Execute
     // Runs all iterations of the temporal filter
-    virtual result Execute();
+    result Execute() override;
 
 private:
 

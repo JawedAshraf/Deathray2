@@ -42,7 +42,7 @@ public:
 
     // Execute
     // Perform NLM computation.
-    virtual result Execute();
+    result Execute() override;
 
 private:
 
