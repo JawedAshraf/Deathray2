@@ -19,7 +19,7 @@ float GetWindowDistance(
 
     for (int y = -3; y < 4; ++y) {
         for (int x = -3; x < 4; ++x) {
-             float diff = target_cache[t_linear++] - sample_cache[s_linear++];
+            float diff = target_cache[t_linear++] - sample_cache[s_linear++];
             distance += g_gaussian[gaussian_position++] * (diff * diff);
         }
         t_linear += 9;
