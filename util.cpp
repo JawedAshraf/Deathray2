@@ -10,6 +10,9 @@
 
 #include "result.h"
 #include "util.h"
+#ifdef __GNUC__
+#include "opencl_deathray2.h"
+#endif
 #include <sstream>
 
 
@@ -99,12 +102,13 @@ result GetSourceFromResource(int resource_id, string *source) {
     // to ensure correct extraction, as LockResource
     // simply returns characters until it finds a \0.    
 
-    HMODULE        dll_handle; 
     HRSRC       kernel_text_resource;
     HGLOBAL     kernel_text_resource_handle = NULL;
     char*        kernel_text;
     DWORD       kernel_text_size;
-
+#ifdef _MSC_VER
+    HMODULE        dll_handle; 
+    
     wchar_t*    dll_name = L"deathray2.dll";
     if ((dll_handle = GetModuleHandle(dll_name)) == NULL) {
         return FILTER_DLL_NOT_FOUND;
@@ -122,7 +126,21 @@ result GetSourceFromResource(int resource_id, string *source) {
 
     kernel_text = (char*)LockResource(kernel_text_resource_handle);
     kernel_text_size = SizeofResource(dll_handle, kernel_text_resource);
+#elif defined(__GNUC__)
+    kernel_text_resource = FindResource(NULL, MAKEINTRESOURCE(resource_id), ((resource_id == RC_UTIL) ? rc_util_cl : ((resource_id == RC_NLM) ? rc_nlm_cl : ((resource_id == RC_NLM_SINGLE) ? rc_nlm_single_cl : ((resource_id == RC_SORT) ? rc_sort_cl : ((resource_id == RC_NLM_MULTI) ? rc_nlm_multi_cl : ""))))));
+    if (!kernel_text_resource) {
+        return FILTER_ERROR;
+    }
 
+    kernel_text_resource_handle = LoadResource(NULL, kernel_text_resource);
+    if (!kernel_text_resource_handle) {
+        return FILTER_ERROR;
+    }
+
+    kernel_text = (char*)LockResource(kernel_text_resource_handle);
+    kernel_text_size = SizeofResource(NULL, kernel_text_resource);
+#endif
+    
     // Truncate the text correctly (random crap until a \0 appears, otherwise)
     source->assign(kernel_text, kernel_text_size) ;
 
