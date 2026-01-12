@@ -91,7 +91,11 @@ result BufferMap::AllocPlane(
 
 result BufferMap::CopyToPlane(
     const   int     &index,
-    const   byte    &host_buffer,             
+#if __GNUC__ && (__cplusplus >= 201703L)
+    const   unsigned char &host_buffer,
+#else
+    const   byte    &host_buffer,
+#endif
     const   int     &host_cols,                 
     const   int     &host_rows,                 
     const   int     &host_pitch) {
@@ -103,7 +107,11 @@ result BufferMap::CopyToPlane(
 
 result BufferMap::CopyToPlaneAsynch(
     const   int         &index,
-    const   byte        &host_buffer,             
+#if __GNUC__ && (__cplusplus >= 201703L)
+    const   unsigned char &host_buffer,
+#else
+    const   byte        &host_buffer,
+#endif
     const   int         &host_cols,                 
     const   int         &host_rows,                 
     const   int         &host_pitch,
@@ -119,7 +127,11 @@ result BufferMap::CopyFromPlane(
     const   int     &host_cols,                 
     const   int     &host_rows,                 
     const   int     &host_pitch,
+#if __GNUC__ && (__cplusplus >= 201703L)
+    unsigned char   *host_buffer) {
+#else
             byte    *host_buffer) {
+#endif
 
     Plane *source;
     source = static_cast<Plane*>(buffer_map_[index]);
@@ -133,7 +145,11 @@ result BufferMap::CopyFromPlaneAsynch(
     const   int         &host_pitch,
     const   cl_event    *antecedent,
             cl_event    *event,
-            byte        *host_buffer) {
+#if __GNUC__ && (__cplusplus >= 201703L)
+    unsigned char   *host_buffer) {
+#else
+            byte    *host_buffer) {
+#endif
 
     Plane *source;
     source = static_cast<Plane*>(buffer_map_[index]);
